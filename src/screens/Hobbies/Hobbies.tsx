@@ -20,11 +20,10 @@ function Hobbies() {
 				</div>
 				<div className="hobbie__section__item">
 					<TextBold>Skils</TextBold>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-						Distinctio necessitatibus neque quasi aut officia fugit sed, 
-						mollitia beatae quia eum tempora facere nulla accusantium! 
-						Quaerat at sapiente unde autem beatae..
-					</p>
+					<p>
+                        Amo fazer crochê para relaxar, tanto que tenho uma lojinha de bonequinhos de crochê (amigurumis)
+                        chamada <a href="https://www.instagram.com/mia_linha/" target="_blank" rel="noopener noreferrer">Mia Linha</a>.
+                    </p>
 				</div>
 			</section>
 		</div>

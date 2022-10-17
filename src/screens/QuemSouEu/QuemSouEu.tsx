@@ -1,56 +1,53 @@
 import { Container } from "../../common-componets/Container";
 import { TitleRegular } from "../../common-componets/Title";
 import './quem-sou-eu-style.css';
+import axios from "axios";
+import React from "react";
 
 function QuemSouEu() {
-	return(
-		<div>
-			<Container color={'#CC3560'}>
-				<TitleRegular color={'#000000'}>OLÁ SOU <br /> CAMILA</TitleRegular>
-			</Container>
-			<section className="quem__sou__eu__section">
+    const [adress, setAdress] = React.useState<any>({});
+    const [showResults, setShowResults] = React.useState(false);
+
+    React.useEffect(() => {
+        axios.get(`http://viacep.com.br/ws/02545100/json/`)
+        .then((response: any) => {
+            setAdress(response.data);
+        });
+    }, []);
+
+    return (
+        <div>
+            <Container color={'#CC3560'}>
+                <TitleRegular color={'#000000'}>OLÁ SOU <br /> CAMILA</TitleRegular>
+            </Container>
+            <section className="quem__sou__eu__section">
                 <div className="quem__sou__eu__section__item">
-				    <TitleRegular color={'#CC3560'}>QUEM SOU EU</TitleRegular>
+                    <TitleRegular color={'#CC3560'}>QUEM SOU EU</TitleRegular>
                 </div>
                 <div className="quem__sou__eu__section__item">
                     <p>
-                        Tenho 23 anos, a maioria deles são compostos de dias de luta.
+                        Tenho 24 anos, a maioria deles são compostos de dias de luta.
                     </p>
                     <p>
                         Faço parte de uma família incrível, onde sou conhecida como "a irmã do meio". 
-                        Nós ajudamos, da maneira que pudermos, animais abandonados. É uma curiosida importante de ressaltar 
+                        Nós ajudamos animais abandonados, é uma curiosida importante de ressaltar 
                         por que vou estar sempre compartilhado as fotinhos deles. E sim, sou usuária do termo “mãe de Pet”.
                     </p>
                     <p>
-                        Amo fazer crochê para relaxar, tanto que tenho uma lojinha de bonequinhos de crochê (amigurumis)
-                        chamada <a href="https://www.instagram.com/mia_linha/" target="_blank" rel="noopener noreferrer">Mia Linha</a>.
+                        Moro em São Paulo, então não sei como é respirar direito, mas pelo menos minha casa fica em uma 
+                        rua sem saída, o que permitiu ter uma infância de muitas brincadeiras na rua. 
                     </p>
                     <p>
-                        Assim como o ar a música é muito importante pra mim, mesmo parecendo que só escuto rock, eu sou bem eclética.
-                        Gosto da música que me deixa bem ou que combine com o momento.
+                        Pesquise meu endereço para ver como a minha rua incrível <br />
+                        <button onClick={() => {setShowResults(true)}}>VER ENDEREÇO</button>
                     </p>
-                    <p>
-                        Adoro assistir seriados, mas não assisto o final deles para que sejam eternos e não derrubem minhas lágrimas. Por 
-                        isso sou apaixonada em filmes, principalmentes filmes trash, meu favorito até hoje é O Ataque dos Vermes Malditos.
-                    </p>
-                    <p>
-                        Atualmente sou estagiária em uma startup como desevolvedora web full stack, sou apaixonada principalmente no front-end e design. Esse é meu primeiro
-                        emprego na área de desenvolvimento, então tem sido meu aprendizado também. Porém no trabalho é importante
-                        cumprir entregas independente de como foi realizado a solução. 
-                    </p>
-                    <p>
-                        Por isso escolhi cursar sistema para internet, quero aprender a realizar soluções e com a certeza de 
-                        não ser uma gambiarra só para poder entregar, quero refletir esse conhecimento no meu trabalho. 
-                        Também quero aprender mais sobre toda a estrutura técnica na área de desenvolvimento web, existem muitos conceitos que são bem vagos pra mim.
-                    </p>
-                    <p>
-                        Espero conhecer pessoas incríveis nesse curso, o que já está acontecendo, e 
-                        aprender a aplicar a tecnologia para tornar o mundo mais sustetável de alguma forma.
-                    </p>
+                    {
+                        showResults ? <p>Meu Endereço: {adress?.logradouro}, {adress?.bairro} - {adress?.localidade} {adress?.uf}</p> : <p></p>
+                    }
+                 
                 </div>
-			</section>
-		</div>
-	);
+            </section>
+        </div>
+    );
 }
-
 export default QuemSouEu;
