@@ -3,6 +3,7 @@ p, li, span{
     /* font-family: 'Inter', sans-serif; */
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1.2vw;
+    line-height: 1.4;
 }
 
 section{
